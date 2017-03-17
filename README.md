@@ -1,4 +1,4 @@
-# rethinker
+# thinker
 
 Rethinkdb mixin for asyncio
 
@@ -14,5 +14,4 @@ Rethinkdb mixin for asyncio
 ```python
 
 from thinker import Thinker
-soon...
 ```
