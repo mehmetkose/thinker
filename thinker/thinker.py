@@ -16,11 +16,11 @@ from thinker import initiator
 class Thinker(object):
 
     @classmethod
-    async def init(cls, database, create_scheme=True):
-        self = Rethinker()
-        self.db = await r.connect(host=database['host'], db=database['db'], port=database['port'])
+    async def init(cls, scheme, create_scheme=True):
+        self = Thinker()
+        self.db = await r.connect(host=scheme['host'], db=scheme['db'], port=scheme['port'])
         if create_scheme:
-            await initiator.create_tables(database=database, connection=self.db)
+            await initiator.create_tables(scheme=scheme, connection=self.db)
         return self
 
     async def iterate_cursor(self, cursor):

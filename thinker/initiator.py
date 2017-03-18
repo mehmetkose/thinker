@@ -8,32 +8,32 @@
 
 import rethinkdb as r
 
-async def create_tables(database, connection):
+async def create_tables(scheme, connection):
     try:
-        await r.db_create(database['db']).run(connection)
-        print('Database created: %s' % (database['db']))
+        await r.db_create(scheme['db']).run(connection)
+        print('Database created: %s' % (scheme['db']))
     except:
         pass
 
-    for table_name in database['tables'].keys():
+    for table_name in scheme['tables'].keys():
         try:
-            await r.db(database['db']).table_create(
+            await r.db(scheme['db']).table_create(
                 table_name, durability='hard').run(connection)
             print('Table created: %s' % (table_name))
         except:
             pass
 
-    for table_name in database['tables'].keys():
-        for table_key in database['tables'][table_name].keys():
-            if 'specs' in database['tables'][table_name][table_key]:
-                specs = database['tables'][table_name][table_key]['specs']
+    for table_name in scheme['tables'].keys():
+        for table_key in scheme['tables'][table_name].keys():
+            if 'specs' in scheme['tables'][table_name][table_key]:
+                specs = scheme['tables'][table_name][table_key]['specs']
                 if 'index' in specs:
                     try:
-                        await r.db(database['db']).table(table_name).index_create(table_key).run(connection)
+                        await r.db(scheme['db']).table(table_name).index_create(table_key).run(connection)
                     except:
                         pass
                 elif 'multiple_index' in specs:
                     try:
-                        await r.db(database['db']).table(table_name).index_create(table_key, multi=True).run(connection)
+                        await r.db(scheme['db']).table(table_name).index_create(table_key, multi=True).run(connection)
                     except:
                         pass
