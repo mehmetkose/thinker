@@ -1,6 +1,6 @@
 # thinker
 
-Rethinkdb mixin for asyncio
+Rethinkdb wrapper for asyncio
 
 **only Python 3.5+ projects**
 

@@ -1,15 +1,16 @@
 
 from distutils.core import setup
+import thinker
 
 setup(
     name='thinker',
-    version='1.0.0',
+    description='Rethinkdb wrapper for asyncio',
+    version=thinker.__version__,
+    author=thinker.__author__,
+    author_email=thinker.__email__,
     packages=['thinker'],
     url='https://github.com/mehmetkose/thinker',
     license='MIT',
-    author='Mehmet Kose',
-    author_email='mehmet@linux.com',
-    description='Rethinkdb wrapper for asyncio',
     platforms=('Any'),
     keywords='asyncio rethinkdb layer'.split(),
     install_requires=[

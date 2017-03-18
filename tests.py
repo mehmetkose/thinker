@@ -1,5 +1,5 @@
 
-# Rethinkdb Wrapper For Tornado Framework
+# Rethinkdb wrapper for asyncio
 # https://github.com/mehmetkose/thinker
 
 # Licensed under the MIT license:
