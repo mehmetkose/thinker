@@ -43,7 +43,7 @@ class ThinkerTest(unittest.TestCase):
         self.assertEqual('foo'.upper(), 'FOO')
 
     @async_test
-    async def test_tcp3_fail(self):
+    async def list_all_method(self):
         db = await Thinker.init(scheme=scheme, create_scheme=True)
         user_list = await db.all("user")
         self.assertListEqual([], user_list)
