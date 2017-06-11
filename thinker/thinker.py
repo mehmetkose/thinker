@@ -9,14 +9,20 @@
 
 import asyncio
 import rethinkdb as r
-r.set_loop_type("asyncio")
+
 
 from thinker import initiator
 
 class Thinker(object):
 
     @classmethod
-    async def init(cls, scheme, create_scheme=True):
+    async def init(cls, scheme, create_scheme=True, loop_type="asyncio", event_loop=False):
+        
+        r.set_loop_type(loop_type)
+
+        if event_loop:
+            asyncio.set_event_loop(event_loop)
+
         self = Thinker()
         self.db = await r.connect(host=scheme['host'], db=scheme['db'], port=scheme['port'])
         if create_scheme:
